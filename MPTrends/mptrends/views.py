@@ -10,8 +10,8 @@ def home(request):
 @view_config(context=MPTrends, renderer='json', route_name='chart_json')
 def chart_json(request):
     r = request.matchdict
-    graphData = request.context.chart(r['search'],r['ids'])
-    return graphData
+    chartData = request.context.chart(r['search'],r['ids'])
+    return chartData
 
 @view_config(context=MPTrends, renderer='json', route_name='mplist_json')
 def mplist_json(request):

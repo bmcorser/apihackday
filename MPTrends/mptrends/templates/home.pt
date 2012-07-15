@@ -21,10 +21,12 @@
                 async: false
             }).responseText;
 
-            var data = google.visualization.arrayToDataTable(eval(json));
+            json = eval(json);
+
+            var data = google.visualization.arrayToDataTable(json[1]);
 
             var options = {
-                title: 'MPTrends',
+                title: json[0],
                 curveType: 'function',
                 animation:{
                     duration: 500,
@@ -110,7 +112,7 @@
 <body>
 <div id="chart_div" style="width: 900px; height: 500px; float: left;"></div>
 <div id="mp_list" style="float: right;">
-<input type="text" id="search_input" /><div id="search">Search</div></div>
+<input type="text" id="search_input" /><div id="search"><h4>Search</h4></div></div>
 </body>
 </html>
 
