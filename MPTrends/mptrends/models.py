@@ -39,6 +39,7 @@ class MPTrends(PersistentMapping):
         firstrow = ['Date']
         dates = []
         for MP in data:
+            #TODO: This provides a KeyError if there are no results
             speaker = MP['speeches'][0]['speaker']
             firstrow.append(speaker['first_name']+' '+speaker['last_name'])
             for speech in MP['speeches']:
@@ -60,7 +61,7 @@ class MPTrends(PersistentMapping):
                         row[me] = row[me] + 1
             me = me + 1
         rows.insert(0,firstrow)
-        return rows
+        return [search,rows]
 
     def mplist(self):
         if self.get('cache') == None: self['cache'] = {}
